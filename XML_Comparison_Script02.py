@@ -1,14 +1,12 @@
 from os import chdir
-import itertools
 
 
 file_path_blank = "H:\Ableton Projects/2016.07 July\TEST_blank Project"
 file_path = "H:\Ableton Projects/2016.07 July\TEST_01 Project"
-# file_path2 = "H:\Ableton Projects/2016.07 July\TEST_02 Project"
+
 
 xml_blank = "test_blank.txt"
 xml1 = "test_01.txt"
-# xml2 = "test_02.txt"
 
 
 def open_xml(path, file):
@@ -21,23 +19,6 @@ def open_xml(path, file):
 
 empty_project = open_xml(file_path_blank, xml_blank)
 proj_x = open_xml(file_path, xml1)
-# proj_y = open_xml(file_path2, xml2)
-
-
-# Compare blank file to the file with one sample in an audio channel.
-# It is a 200,000+ letter text file.
-# 0) Compare letter by letter. If there is no difference, do nothing.
-# But when there is a difference...
-# a) report the index where the difference in characters began.
-# b) Load a "buffer" of 5 characters, starting from the blank project
-#    file's text, starting from the index where the difference began.
-#    (Report also what buffer was chosen.)
-# c) Using the buffer to compare, interrupt the process of
-#    letter by letter comparison, and compare the non-empty proj to the
-#    buffer. Progress from the index where the || ("difference") was spotted
-#    until a match for the buffer is found in the non-empty proj.
-# d) When the non-empty project seems to match the blank project again,
-#    pick up comparing letter by letter again.
 
 
 def compare(blank_text, text2, from_index=0, bump=0):
@@ -84,20 +65,3 @@ def search_match(text_to_search, from_index, buffer_text):
             pass
 
 # compare(empty_project, proj_x)
-
-test_text_one_a = """This is a sentence. Here are some words. I like to type.
-                Testing code is fun. Who likes to code? I sure do.This is a sentence. Here are some words. I like to type.
-                Testing code is fun. Who likes to code? I sure do.This is a sentence. Here are some words. I like to type.
-                Testing code is fun. Who likes to code? I sure do.This is a sentence. Here are some words. I like to type.
-                Testing code is fun. Who likes to code? I sure do.This is a sentence. Here are some words. I like to type.
-                Testing code is fun. Who likes to code? I sure do.This is a sentence. Here are some words. I like to type.
-                Testing code is fun. Who likes to code? I sure do."""
-test_text_one_b = """This is a sentence. Here are some words. I like to type.
-                Testing code is f234@$$sun. Who likes to code? I sure do.This is a sentence. Here are some words. I like to type.
-                Testing code is f234@$$sun. Who likes to code? I sure do.This is a sentence. Here are some words. I like to type.
-                Testing code is f234@$$sun. Who likes to code? I sure do.This is a sentence. Here are some words. I like to type.
-                Testing code is f234@$$sun. Who likes to code? I sure do.This is a sentence. Here are some words. I like to type.
-                Testing code is f234@$$sun. Who likes to code? I sure do.This is a sentence. Here are some words. I like to type.
-                Testing code is f234@$$sun. Who likes to code? I sure do."""
-
-compare(test_text_one_a, test_text_one_b)
